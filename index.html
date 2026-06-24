@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>روام التسويقية | ملف أعمال</title>
+<meta content="روام التسويقية فريق سعودي بالكامل يقدم حلولًا تسويقية متكاملة في التخطيط، صناعة المحتوى، إدارة الحسابات، الإنتاج، والحملات الإعلانية." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary": "#182b3f", // Navy from shader/logo
+          "secondary": "#e6e3ce", // Beige from shader
+          "accent": "#4e6076", // BlueGray from shader
+          "on-primary": "#ffffff",
+          "surface": "#131c28",
+          "surface-variant": "rgba(255, 255, 255, 0.05)",
+        },
+        "fontFamily": {
+          sans: ['IBM Plex Sans Arabic', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  :root {
+    --navy: #182b3f;
+    --beige: #e6e3ce;
+    --blueGray: #4e6076;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background-color: var(--navy);
+    color: #ffffff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  .cinematic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .glass-card {
+    background: rgba(24, 43, 63, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card:hover {
+    background: rgba(24, 43, 63, 0.6);
+    border-color: var(--beige);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-blur {
+    background: rgba(24, 43, 63, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(230, 227, 206, 0.3);
+  }
+
+  .sadu-border {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--beige), transparent);
+    width: 100%;
+    opacity: 0.5;
+  }
+
+  #threejs-astronaut-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .section-overlay {
+    background: radial-gradient(circle at center, transparent 0%, rgba(24, 43, 63, 0.4) 100%);
+  }
+
+  .portfolio-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+
+  .portfolio-image-container img {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .portfolio-image-container:hover img {
+    transform: scale(1.08);
+  }
+
+  .wa-float {
+    background: #25D366;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+  }
+
+  .portfolio-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: var(--beige) rgba(255,255,255,0.06);
+  }
+  .portfolio-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .portfolio-scroll::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+  }
+  .portfolio-scroll::-webkit-scrollbar-thumb {
+    background: var(--beige);
+    opacity: 0.4;
+    border-radius: 999px;
+  }
+  .portfolio-scroll.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+  }
+</style>
+</head>
+<body class="selection:bg-secondary selection:text-primary">
+<!-- DYNAMIC SHADER BACKGROUND -->
+<div class="cinematic-bg">
+<canvas height="6751" id="shader-canvas-ANIMATION_3" style="display:block;width:100%;height:100%" width="1311"></canvas>
+</div>
+<!-- NAVIGATION -->
+<nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500" id="navbar">
+<div class="max-w-[1280px] mx-auto px-8 py-6 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<img alt="روام التسويقية" class="h-9 w-auto" src="images/logo.png"/>
+<span class="font-black text-xl tracking-tighter text-white uppercase hidden md:block">RUWAM</span>
+</div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="text-sm font-medium hover:text-secondary transition-colors" href="#home">الرئيسية</a>
+<a class="text-sm font-medium hover:text-secondary transition-colors" href="#about">من نحن</a>
+<a class="text-sm font-medium hover:text-secondary transition-colors" href="#services">خدماتنا</a>
+<a class="text-sm font-medium hover:text-secondary transition-colors" href="#portfolio">أعمالنا</a>
+<a class="bg-secondary text-primary px-7 py-2.5 rounded-full text-sm font-bold hover:shadow-[0_0_20px_rgba(230,227,206,0.4)] transition-all active:scale-95" href="#contact">
+        تواصل معنا
+      </a>
+</div>
+<button class="md:hidden text-white" id="menu-toggle">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</nav>
+<!-- MOBILE MENU -->
+<div class="fixed inset-0 z-[60] bg-primary/95 backdrop-blur-xl -translate-y-full transition-transform duration-700 md:hidden flex flex-col items-center justify-center gap-8" id="mobile-menu">
+<button class="absolute top-8 right-8 text-white" id="menu-close">
+<span class="material-symbols-outlined text-4xl">close</span>
+</button>
+<a class="text-white text-3xl font-bold hover:text-secondary" href="#home">الرئيسية</a>
+<a class="text-white text-3xl font-bold hover:text-secondary" href="#about">من نحن</a>
+<a class="text-white text-3xl font-bold hover:text-secondary" href="#services">خدماتنا</a>
+<a class="text-white text-3xl font-bold hover:text-secondary" href="#portfolio">أعمالنا</a>
+<a class="bg-secondary text-primary px-12 py-5 rounded-full text-xl font-bold" href="#contact">تواصل معنا</a>
+</div>
+<main>
+<!-- HERO SECTION -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden section-overlay" id="home">
+<div id="threejs-astronaut-container"><canvas height="14564" style="display: block; width: 1280px; height: 7282px;" width="2560"></canvas><canvas height="13502" style="display: block; width: 1311px; height: 6751px;" width="2622"></canvas></div>
+<div class="max-w-[1280px] mx-auto px-8 relative z-10 w-full">
+<div class="max-w-3xl text-right md:pr-12">
+<div class="reveal inline-flex items-center gap-3 px-5 py-2 rounded-full glass-card text-secondary text-xs font-bold tracking-[0.2em] mb-8 active">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          فريق سعودي بالكامل
+        </div>
+<h1 class="reveal text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tight mb-8 text-glow active">
+          روام التسويقية<br/>
+<span class="text-secondary">نحوّل الأفكار</span> إلى أثر
+        </h1>
+<p class="reveal text-white/70 text-lg md:text-xl leading-relaxed mb-12 max-w-xl active">
+          نحن في روام، نصنع حضوراً تسويقياً مؤثراً يقود العلامات التجارية نحو النمو والريادة من خلال استراتيجيات مدروسة وإبداع بلا حدود.
+        </p>
+<div class="reveal flex flex-col sm:flex-row gap-5 justify-start active">
+<a class="bg-secondary text-primary px-10 py-5 rounded-full font-bold text-lg hover:shadow-[0_0_30px_rgba(230,227,206,0.3)] transition-all flex items-center justify-center gap-3 group" href="#portfolio">
+            شاهد أعمالنا
+            <span class="material-symbols-outlined transition-transform group-hover:-translate-x-2">arrow_back</span>
+</a>
+<a class="glass-card text-white border border-white/10 px-10 py-5 rounded-full font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center" href="#contact">
+            تواصل معنا
+          </a>
+</div>
+<div class="reveal grid grid-cols-3 gap-12 mt-20 pt-10 border-t border-white/10 active">
+<div>
+<div class="text-4xl font-black text-secondary">100%</div>
+<div class="text-white/40 text-xs font-bold uppercase tracking-widest mt-2">فريق محلي</div>
+</div>
+<div>
+<div class="text-4xl font-black text-secondary">5</div>
+<div class="text-white/40 text-xs font-bold uppercase tracking-widest mt-2">تصنيفات أعمال</div>
+</div>
+<div>
+<div class="text-4xl font-black text-secondary">360°</div>
+<div class="text-white/40 text-xs font-bold uppercase tracking-widest mt-2">حلول ذكية</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="sadu-border"></div>
+<!-- ABOUT SECTION -->
+<section class="py-32 relative section-overlay" id="about">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="grid lg:grid-cols-2 gap-24 items-center"><div class="reveal max-w-3xl mx-auto text-center mb-20">
+<div class="flex items-center justify-center gap-4 mb-8">
+<span class="h-[2px] w-12 bg-secondary"></span>
+<span class="text-secondary font-bold uppercase tracking-[0.3em] text-xs">من نحن</span>
+<span class="h-[2px] w-12 bg-secondary"></span>
+</div>
+<h2 class="text-4xl md:text-6xl font-black text-white mb-10 leading-tight">هوية تسويقية سعودية تجمع الأصالة بالابتكار</h2>
+<p class="text-white/70 text-lg leading-relaxed mb-12">
+    روام التسويقية فريق سعودي بالكامل، نقدم حلولًا تسويقية متكاملة تساعد العلامات التجارية على بناء حضور أقوى والوصول لجمهورها بطرق مدروسة وفعّالة.
+  </p>
+</div>
+<div class="grid md:grid-cols-3 gap-8 reveal"><!-- Card 1: About Ruwam -->
+<div class="glass-card p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden" onclick="this.classList.toggle('h-auto'); this.querySelector('.details').classList.toggle('hidden'); this.querySelector('.details').classList.toggle('animate-pulse');">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-xl text-secondary">عن روام</h3>
+<span class="material-symbols-outlined text-secondary transition-transform group-hover:rotate-180">expand_more</span>
+</div>
+<div class="details hidden transition-all duration-500">
+<p class="text-white/60 text-sm leading-relaxed">نؤمن أن التسويق الحقيقي يبدأ من فهم السوق وتحليل سلوك العميل وبناء استراتيجية واضحة.</p>
+</div>
+</div>
+<!-- Card 2: What We Offer -->
+<div class="bg-secondary text-primary p-8 rounded-3xl shadow-2xl cursor-pointer group transition-all duration-500 overflow-hidden" onclick="this.classList.toggle('h-auto'); this.querySelector('.details').classList.toggle('hidden');">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-xl">ما نقدمه</h3>
+<span class="material-symbols-outlined transition-transform group-hover:rotate-180">expand_more</span>
+</div>
+<div class="details hidden transition-all duration-500">
+<p class="text-primary/70 text-sm leading-relaxed">نقدم خدمات التخطيط، إدارة الحسابات، صناعة المحتوى، الإنتاج، والحملات الإعلانية.</p>
+</div>
+</div>
+<!-- Card 3: Our Vision -->
+<div class="glass-card p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden" onclick="this.classList.toggle('h-auto'); this.querySelector('.details').classList.toggle('hidden');">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-bold text-xl text-secondary">رؤيتنا</h3>
+<span class="material-symbols-outlined text-secondary transition-transform group-hover:rotate-180">expand_more</span>
+</div>
+<div class="details hidden transition-all duration-500">
+<p class="text-white/60 text-sm leading-relaxed">نجمع بين دقة التحليل وحس الإبداع، لنقدّم لعملائنا حلولًا متكاملة من الفكرة الأولى حتى قياس الأثر.</p>
+</div>
+</div></div></div>
+</div>
+</section>
+<!-- METHODOLOGY SECTION -->
+<section class="py-32 bg-black/20" id="method">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="text-center mb-24 reveal active">
+<h2 class="text-4xl md:text-5xl font-black mb-6 text-glow">منهجيتنا في العمل</h2>
+<p class="text-secondary/60 text-lg">ثلاث خطوات مدروسة لتحقيق أثر واحد مستدام</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="reveal glass-card p-12 rounded-[2.5rem] active">
+<span class="text-7xl font-black text-white/5 block mb-8">01</span>
+<h3 class="text-2xl font-bold text-secondary mb-5">نفهم قبل أن ننفذ</h3>
+<p class="text-white/60 leading-relaxed">نحلل السوق والمنافسين وسلوك العميل لنبني صورة واضحة ومبنية على بيانات حقيقية.</p>
+</div>
+<div class="reveal glass-card p-12 rounded-[2.5rem] border-secondary/20 active">
+<span class="text-7xl font-black text-white/5 block mb-8">02</span>
+<h3 class="text-2xl font-bold text-secondary mb-5">ننفذ باستراتيجية</h3>
+<p class="text-white/60 leading-relaxed">نصنع محتوى وحملات موجهة تخاطب جمهورك المستهدف بلغتهم وتلبي احتياجاتهم.</p>
+</div>
+<div class="reveal glass-card p-12 rounded-[2.5rem] active">
+<span class="text-7xl font-black text-white/5 block mb-8">03</span>
+<h3 class="text-2xl font-bold text-secondary mb-5">نقيس ونطور</h3>
+<p class="text-white/60 leading-relaxed">نراقب الأداء باستمرار ونحسن النتائج لضمان تحقيق أعلى عائد على الاستثمار.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICES SECTION -->
+<section class="py-32 relative section-overlay" id="services">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-24 reveal active">
+<div class="max-w-2xl">
+<div class="flex items-center gap-4 mb-6">
+<span class="h-[2px] w-12 bg-secondary"></span>
+<span class="text-secondary font-bold text-xs uppercase tracking-[0.3em]">خدماتنا</span>
+</div>
+<h2 class="text-4xl md:text-6xl font-black text-white">حلول تسويقية متكاملة</h2>
+</div>
+<a class="text-secondary font-bold flex items-center gap-3 group mt-10 md:mt-0 px-8 py-4 rounded-full glass-card hover:bg-secondary hover:text-primary transition-all" href="#contact">
+          اطلب استشارة مجانية
+          <span class="material-symbols-outlined transition-transform group-hover:-translate-x-2">arrow_back</span>
+</a>
+</div>
+<div class="grid lg:grid-cols-3 gap-8">
+<div class="reveal glass-card p-12 rounded-[3rem] group active">
+<div class="w-20 h-20 bg-white/5 rounded-[2rem] flex items-center justify-center mb-10 group-hover:bg-secondary group-hover:rotate-6 transition-all duration-500">
+<span class="material-symbols-outlined text-white text-4xl group-hover:text-primary transition-colors">trending_up</span>
+</div>
+<h3 class="text-2xl font-black text-white mb-8">الاستراتيجية والإعلانات</h3>
+<ul class="space-y-5">
+<li class="flex items-center gap-4 text-white/60">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> خطط تسويقية متكاملة
+            </li>
+<li class="flex items-center gap-4 text-white/60">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> تحليل السوق والمنافسين
+            </li>
+<li class="flex items-center gap-4 text-white/60">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> إدارة حملات الأداء
+            </li>
+</ul>
+</div>
+<div class="reveal bg-secondary text-primary p-12 rounded-[3rem] shadow-2xl relative overflow-hidden active">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+<div class="w-20 h-20 bg-primary/10 rounded-[2rem] flex items-center justify-center mb-10">
+<span class="material-symbols-outlined text-primary text-4xl">edit_square</span>
+</div>
+<h3 class="text-2xl font-black mb-8">المحتوى وإدارة الحسابات</h3>
+<ul class="space-y-5">
+<li class="flex items-center gap-4 text-primary/70">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span> إدارة منصات التواصل
+            </li>
+<li class="flex items-center gap-4 text-primary/70">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span> صناعة المحتوى الإبداعي
+            </li>
+<li class="flex items-center gap-4 text-primary/70">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span> كتابة الأفكار والسكربتات
+            </li>
+</ul>
+</div>
+<div class="reveal glass-card p-12 rounded-[3rem] group active">
+<div class="w-20 h-20 bg-white/5 rounded-[2rem] flex items-center justify-center mb-10 group-hover:bg-secondary group-hover:rotate-6 transition-all duration-500">
+<span class="material-symbols-outlined text-white text-4xl group-hover:text-primary transition-colors">photo_camera</span>
+</div>
+<h3 class="text-2xl font-black text-white mb-8">الإنتاج والنمو الرقمي</h3>
+<ul class="space-y-5">
+<li class="flex items-center gap-4 text-white/60">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> تصوير ومونتاج سينمائي
+            </li>
+<li class="flex items-center gap-4 text-white/60">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> إدارة حملات المؤثرين
+            </li>
+<li class="flex items-center gap-4 text-white/60">
+<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> تحسين محركات البحث
+            </li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- PORTFOLIO SECTION -->
+<section class="py-32" id="portfolio">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="text-center mb-24 reveal active">
+<h2 class="text-4xl md:text-6xl font-black mb-6 text-glow">أعمالنا الإبداعية</h2>
+<p class="text-white/40 text-lg uppercase tracking-widest font-bold">قصص نجاح نعتز بصناعتها</p>
+</div>
+<div class="reveal active mb-4">
+<div class="portfolio-scroll flex gap-6 overflow-x-auto scroll-auto snap-x snap-mandatory cursor-grab select-none pb-2" id="portfolio-scroll">
+<div class="portfolio-image-container group shrink-0 snap-start w-[260px] sm:w-[320px] h-[380px]">
+<img alt="من أعمالنا" class="w-full h-full object-cover pointer-events-none" draggable="false" src="images/work-1.jpg"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl">fullscreen</span>
+</div>
+</div>
+<div class="portfolio-image-container group shrink-0 snap-start w-[260px] sm:w-[320px] h-[380px]">
+<img alt="من أعمالنا" class="w-full h-full object-cover pointer-events-none" draggable="false" src="images/work-2.jpg"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl">fullscreen</span>
+</div>
+</div>
+<div class="portfolio-image-container group shrink-0 snap-start w-[260px] sm:w-[320px] h-[380px]">
+<img alt="من أعمالنا" class="w-full h-full object-cover pointer-events-none" draggable="false" src="images/work-3.jpg"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl">fullscreen</span>
+</div>
+</div>
+<div class="portfolio-image-container group shrink-0 snap-start w-[260px] sm:w-[320px] h-[380px]">
+<img alt="من أعمالنا" class="w-full h-full object-cover pointer-events-none" draggable="false" src="images/work-4.jpg"/>
+<div class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-4xl">fullscreen</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center gap-2 mt-4 text-white/30 text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-base">swipe</span>
+          اسحب لاستكشاف المزيد من الأعمال
+        </div>
+</div>
+<div class="grid md:grid-cols-3 gap-8 reveal active">
+<div class="glass-card rounded-[2rem] overflow-hidden group">
+<div class="relative aspect-[9/16] overflow-hidden">
+<img alt="عكاظ الطبية" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGhOzUbZGUePisyMDQG5iFAkQhBfIvM9nhYXaucdMz7dd7oVKBusP3MePorpTEsZ3T2x3TecRNcvp7mThBFWdr3bh-Lcplc-945obCHz4oW3in7QUzixEyS8QFV1FJeG9RIJanTkflKJNEE5nC6-SgpOweu5fYLXdAeNq7s-xpFIx0GUjXDqcm9jit7mZNqoESI8JeG9hGdC2bn2uWtr2TFev1bPdNcGCpOviImjV1bGCLz2M1Zl3JYEfVm-kJaSFaWbqJ3iTTihI"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-primary/40">
+<button class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
+<span class="material-symbols-outlined text-primary text-4xl">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="p-8">
+<h4 class="font-bold text-xl text-white mb-2">عكاظ الطبية</h4>
+<p class="text-white/40 text-sm">محتوى تسويقي لعيادة تجميل</p>
+</div>
+</div>
+<div class="glass-card rounded-[2rem] overflow-hidden group">
+<div class="relative aspect-[9/16] overflow-hidden">
+<img alt="مشروع هندي" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnodWHaYZQZdEF2ffnUnPc-f0twF78OKH-Vw7_RD3Sz6jv-uSLG_C1rGvx4A1iG6hQAOr614q5meWozFysIFIumZ2IrENsFCT1TCGGaJJn2zAiNsxEYGfiynz_082Ey-f7BDdOkouIQ_d5LQd_ane-aZ7O740CvRiLEnVNMdJ3Se5TtVRxTQWdlitRxLimmbQFuAByE2F1y0A_Q3x6VIeGtJ_caZhKniD3Dqj3U1dF69nIBg85BeJNP2zLC3U92I3-Cq0JCp8R_zQ"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-primary/40">
+<button class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
+<span class="material-symbols-outlined text-primary text-4xl">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="p-8">
+<h4 class="font-bold text-xl text-white mb-2">مشروع هندي</h4>
+<p class="text-white/40 text-sm">لقطات تحضير الأطباق</p>
+</div>
+</div>
+<div class="glass-card rounded-[2rem] overflow-hidden group">
+<div class="relative aspect-[9/16] overflow-hidden">
+<img alt="محتوى مرئي" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzbx4vSxT-4kyDAvKxWRKyf0qQPBImpop8xOmC5535rVpuWbjZD9C9YCbHDnoWRzfmPt3jObalBexnqpFAFI09JlZON5kxxcTImkxvhFOpor1-DMMBWKQ8JAU71yCxW3MWXsv8TwbiIRUipqSNX9AWEp_M1BaalxRnofNBjyn8JDik1vSezBFUQOIyjRxOkzErjEkEuQinr8K0RVNl_7YQk3XyF6EWKgdlxj6PAq0-uhrB8f2wHXoGuZh3_Hq8Z3hHz3QYZUmdodE"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-primary/40">
+<button class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
+<span class="material-symbols-outlined text-primary text-4xl">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="p-8">
+<h4 class="font-bold text-xl text-white mb-2">دعائي للمطاعم</h4>
+<p class="text-white/40 text-sm">محتوى مرئي للمطاعم</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- WHY US SECTION -->
+<section class="py-32 relative section-overlay" id="why">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="max-w-4xl mx-auto">
+<div class="grid md:grid-cols-3 gap-12 reveal active">
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center shrink-0 border border-secondary/20 group-hover:bg-secondary group-hover:rotate-12 transition-all duration-500 mb-6">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary text-4xl">done_all</span>
+</div>
+<h4 class="font-bold text-2xl text-white mb-4">فريق سعودي بالكامل</h4>
+<p class="text-white/50 text-base leading-relaxed">نتحدث لغة السوق ونفهم تفاصيل الثقافة المحلية بعمق لضمان وصول رسالتكم بشكل صحيح.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center shrink-0 border border-secondary/20 group-hover:bg-secondary group-hover:rotate-12 transition-all duration-500 mb-6">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary text-4xl">analytics</span>
+</div>
+<h4 class="font-bold text-2xl text-white mb-4">إبداع وتحليل معاً</h4>
+<p class="text-white/50 text-base leading-relaxed">نجمع بين الحس الإبداعي الرفيع والقرار المبني على بيانات حقيقية وتحليلات دقيقة للسوق.</p>
+</div>
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 bg-secondary/10 rounded-2xl flex items-center justify-center shrink-0 border border-secondary/20 group-hover:bg-secondary group-hover:rotate-12 transition-all duration-500 mb-6">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary text-4xl">auto_awesome</span>
+</div>
+<h4 class="font-bold text-2xl text-white mb-4">حلول متكاملة 360°</h4>
+<p class="text-white/50 text-base leading-relaxed">من الفكرة الأولى وحتى التنفيذ الكامل وقياس الأثر النهائي، نحن شركاؤكم في كل خطوة.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT SECTION -->
+<section class="py-32 relative overflow-hidden" id="contact">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="glass-card rounded-[4rem] p-12 md:p-24 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-secondary/5 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+<div class="reveal text-center max-w-4xl mx-auto active">
+<h2 class="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">جاهز لتحويل فكرتك<br/><span class="text-secondary text-glow">إلى أثر؟</span></h2>
+<p class="text-white/60 text-xl mb-16 leading-relaxed mx-auto">ابدأوا معنا رحلة بناء حضور تسويقي أقوى. فريقنا جاهز لمناقشة مشروعكم وتحويله إلى نتائج ملموسة.</p>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center group">
+<div class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-500 mb-6">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary text-4xl">call</span>
+</div>
+<div class="text-white/40 text-xs font-bold uppercase tracking-widest mb-2">رقم التواصل</div>
+<div class="text-2xl font-black text-white" dir="ltr">0573795351</div>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-500 mb-6">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary text-4xl">mail</span>
+</div>
+<div class="text-white/40 text-xs font-bold uppercase tracking-widest mb-2">البريد الإلكتروني</div>
+<div class="text-xl font-black text-white break-all">Ruwam.marketing@gmail.com</div>
+</div>
+<div class="flex flex-col items-center group">
+<div class="w-20 h-20 glass-card rounded-2xl flex items-center justify-center group-hover:bg-secondary group-hover:scale-110 transition-all duration-500 mb-6">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary text-4xl">location_on</span>
+</div>
+<div class="text-white/40 text-xs font-bold uppercase tracking-widest mb-2">الموقع</div>
+<div class="text-2xl font-black text-white">المملكة العربية السعودية، تبوك</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="py-16 border-t border-white/5 bg-black/40 backdrop-blur-md">
+<div class="max-w-[1280px] mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-12">
+<div class="flex flex-col items-center md:items-start gap-4">
+<img alt="روام التسويقية" class="h-12 w-auto" src="images/logo.png"/>
+<span class="font-black text-lg text-white/80 uppercase tracking-tighter">RUWAM MARKETING</span>
+</div>
+<div class="flex gap-12 text-white/40 text-sm font-bold uppercase tracking-widest">
+<a class="hover:text-secondary transition-colors" href="#home">الرئيسية</a>
+<a class="hover:text-secondary transition-colors" href="#about">من نحن</a>
+<a class="hover:text-secondary transition-colors" href="#">سياسة الخصوصية</a>
+</div>
+<div class="flex gap-4">
+<div class="w-14 h-14 glass-card rounded-full flex items-center justify-center hover:bg-secondary hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl">share</span>
+</div>
+<div class="w-14 h-14 glass-card rounded-full flex items-center justify-center hover:bg-secondary hover:text-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined text-xl">language</span>
+</div>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-white/5 text-center text-white/20 text-xs font-medium uppercase tracking-[0.3em]">
+      © 2026 جميع الحقوق محفوظة لشركة روام التسويقية. نُحوّل الأفكار إلى أثر.
+    </div>
+</div>
+</footer>
+<!-- WHATSAPP FLOAT -->
+<a class="fixed bottom-10 left-10 z-[100] wa-float text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-90 p-4 animate-pulse w-20 h-20 hover:shadow-[0_0_30px_rgba(37,211,102,0.6)]" href="https://wa.me/966573795351" target="_blank">
+<svg class="fill-current w-10 h-10 text-white" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M380.9 97.1C339 55.1 283.2 32 224.1 32c-122.4 0-222 99.6-222 222 0 39.2 10.2 77.7 29.6 111.4L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.4 0 222-99.6 222-222 0-59.3-23.2-115-65-156.9zM224.1 438.6h-.1c-29.2 0-57.6-7.8-82.4-22.7l-5.9-3.5-61.8 16.2 16.5-60.2-3.8-6.1c-16.3-25.9-25-55.8-25-86.6 0-89.5 72.8-162.3 162.3-162.3 43.4 0 84.2 16.9 114.8 47.5 30.6 30.6 47.5 71.4 47.5 114.8 0 89.5-72.7 162.4-162.1 162.4zm83.4-121.1c-4.5-2.3-26.7-13.2-30.8-14.7-4.1-1.5-7.1-2.3-10.1 2.3-3 4.6-11.6 14.7-14.2 17.7-2.6 3-5.3 3.4-9.8 1.1-26.7-13.4-44.2-24-61.9-54.5-4.7-8.1 4.7-7.5 13.4-25 1.5-3 .8-5.6-.3-7.9-1.1-2.3-9.9-23.8-13.6-32.6-3.6-8.6-7.3-7.4-10.1-7.6-2.6-.1-5.6-.1-8.6-.1-3 0-7.8 1.1-11.9 5.6-4.1 4.5-15.7 15.3-15.7 37.3 0 22 16 43.3 18.2 46.3 2.3 3 31.6 48.3 76.6 65.8 38.1 14.8 45.9 11.9 54.2 11.1 8.3-.8 26.7-10.9 30.5-21.4 3.8-10.5 3.8-19.5 2.7-21.4-1.1-1.9-4.1-3-8.6-5.2z"/></svg>
+</a>
+<script>
+  // ---------- SHADER BACKGROUND (From SCREEN_29) ----------
+  (function initShader() {
+    const canvas = document.getElementById('shader-canvas-ANIMATION_3');
+    function syncSize() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width  = w;
+        canvas.height = h;
+      }
+    }
+    window.addEventListener('resize', syncSize);
+    syncSize();
+
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    if (!gl) return;
+    const vs = `attribute vec2 a_position; varying vec2 v_texCoord; void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
+    const fs = `precision highp float;
+      varying vec2 v_texCoord;
+      uniform float u_time;
+      uniform vec2 u_resolution;
+      const vec3 navy = vec3(0.094, 0.169, 0.247);     // #182B3F
+      const vec3 beige = vec3(0.902, 0.890, 0.808);    // #E6E3CE
+      const vec3 blueGray = vec3(0.306, 0.376, 0.463); // #4E6076
+      void main() {
+          vec2 uv = v_texCoord;
+          float noise1 = sin(uv.x * 3.0 + u_time * 0.3) * cos(uv.y * 2.0 + u_time * 0.2);
+          float noise2 = sin(uv.y * 4.0 - u_time * 0.2) * cos(uv.x * 2.5 + u_time * 0.4);
+          float mask = smoothstep(0.2, 0.8, uv.y + noise1 * 0.15 + noise2 * 0.1);
+          vec3 color = mix(beige, navy, mask);
+          float accentMask = smoothstep(0.4, 0.9, uv.x + noise2 * 0.2);
+          color = mix(color, blueGray, accentMask * 0.15);
+          gl_FragColor = vec4(color, 1.0);
+      }`;
+    function cs(type, src) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return s;
+    }
+    const prog = gl.createProgram();
+    gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+    gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    const pos = gl.getAttribLocation(prog, 'a_position');
+    gl.enableVertexAttribArray(pos);
+    gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+    const uTime = gl.getUniformLocation(prog, 'u_time');
+    function render(t) {
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.uniform1f(uTime, t * 0.001);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      requestAnimationFrame(render);
+    }
+    render(0);
+  })();
+
+  // ---------- ASTRONAUT ANIMATION (From SCREEN_23) ----------
+  (function initAstronaut() {
+    const container = document.getElementById('threejs-astronaut-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    const loader = new THREE.TextureLoader();
+    const astronautTexture = loader.load('https://lh3.googleusercontent.com/aida-public/AB6AXuCocwr4d-x6abdgh-inLu7zcpeSrQ0xnBcDopJuGaHZCW-Bvb4QIzSboUmPxna2Y4uRrMGC8aMQiWAsEnvEEjJa6xz5WomOaw0m0Q3qd1EShLrhq42lf2DqqGgEDkrHMJvyV8b00L3v10xjEXTQiVaqkx-tFupTjBbI4TuyQYbbnvEQcWxu5iXSZ3o97Is9HIkE7VjwDc1xSDmG9sQuA5G9o1ZB0bj4vAT86AvcWUK2Fjc3ktQfKwebuhp1heprNNHDAWDrMGvS7no');
+
+    const geometry = new THREE.PlaneGeometry(7, 9);
+    const material = new THREE.MeshBasicMaterial({ map: astronautTexture, transparent: true, alphaTest: 0.1 });
+    const astronaut = new THREE.Mesh(geometry, material);
+    scene.add(astronaut);
+    
+    // Position on the left for Arabic layout
+    astronaut.position.x = -5;
+    astronaut.position.y = 0;
+    camera.position.z = 10;
+
+    let mouseX = 0, mouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    function animate(t) {
+      requestAnimationFrame(animate);
+      const time = t * 0.001;
+      
+      astronaut.position.y = Math.sin(time * 0.5) * 0.3;
+      astronaut.rotation.z = Math.sin(time * 0.3) * 0.05;
+      
+      astronaut.position.x = THREE.MathUtils.lerp(astronaut.position.x, -5 + mouseX * 0.5, 0.05);
+      astronaut.position.y += mouseY * -0.2;
+      
+      renderer.render(scene, camera);
+    }
+    animate(0);
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  })();
+
+  // ---------- PORTFOLIO DRAG-TO-SCROLL ----------
+  (function initPortfolioDrag() {
+    const el = document.getElementById('portfolio-scroll');
+    if (!el) return;
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+
+    function start(x) {
+      isDown = true; moved = false;
+      startX = x;
+      startScroll = el.scrollLeft;
+      el.classList.add('dragging');
+    }
+    function move(x) {
+      if (!isDown) return;
+      const dx = x - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      el.scrollLeft = startScroll - dx;
+    }
+    function end() {
+      isDown = false;
+      el.classList.remove('dragging');
+    }
+
+    el.addEventListener('mousedown', (e) => { start(e.pageX); e.preventDefault(); });
+    window.addEventListener('mousemove', (e) => move(e.pageX));
+    window.addEventListener('mouseup', end);
+    el.addEventListener('mouseleave', () => { if (isDown) end(); });
+
+    el.addEventListener('touchstart', (e) => start(e.touches[0].pageX), { passive: true });
+    el.addEventListener('touchmove', (e) => move(e.touches[0].pageX), { passive: true });
+    el.addEventListener('touchend', end);
+
+    // Prevent click-through (e.g. fullscreen overlay) right after a drag
+    el.addEventListener('click', (e) => { if (moved) e.preventDefault(); }, true);
+  })();
+
+  // ---------- REVEAL ANIMATIONS ----------
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ---------- NAVBAR STYLE ----------
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('nav-blur', 'py-4');
+      nav.classList.remove('py-6');
+    } else {
+      nav.classList.remove('nav-blur', 'py-4');
+      nav.classList.add('py-6');
+    }
+  });
+
+  // ---------- MOBILE MENU ----------
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', () => mobileMenu.classList.remove('-translate-y-full'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.add('-translate-y-full'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('-translate-y-full')));
+</script>
+</body></html>
