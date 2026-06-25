@@ -275,38 +275,69 @@
 }
 
 @media (max-width: 640px) {
+  #home {
+    min-height: 980px;
+    align-items: flex-start;
+    padding-top: 130px;
+    padding-bottom: 360px;
+  }
+
   .left-hero-mockup {
     display: block;
-    opacity: 0.22;
-    width: 105vw;
-    left: -42%;
-    top: 68%;
-    z-index: 0;
+    opacity: 1;
+    width: 92vw;
+    left: 50%;
+    top: auto;
+    bottom: 70px;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: none;
+  }
+
+  .left-hero-mockup::before {
+    inset: 8%;
+    filter: blur(35px);
+    opacity: 0.8;
   }
 
   .hero-3d-card {
-    transform: scale(0.58);
-    opacity: 0.85;
+    min-width: 105px;
+    padding: 9px 10px;
+    border-radius: 16px;
+    transform: scale(0.78);
+  }
+
+  .hero-3d-card small {
+    font-size: 9px;
+    margin-bottom: 4px;
+  }
+
+  .hero-3d-card strong {
+    font-size: 16px;
+  }
+
+  .hero-3d-card .material-symbols-outlined {
+    font-size: 16px;
   }
 
   .card-accounts {
-    top: 6%;
-    right: 12%;
+    top: 7%;
+    right: 5%;
   }
 
   .card-likes {
-    top: 14%;
-    left: 4%;
+    top: 18%;
+    left: 0%;
   }
 
   .card-growth {
-    bottom: 30%;
-    right: 12%;
+    bottom: 22%;
+    right: 5%;
   }
 
   .card-reach {
-    bottom: 18%;
-    left: 8%;
+    bottom: 7%;
+    left: 5%;
   }
 }
 </style>
