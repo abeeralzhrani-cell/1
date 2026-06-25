@@ -154,6 +154,140 @@
     cursor: grabbing;
     scroll-snap-type: none;
   }
+  /* ===== إضافة تصميم الواجهة اليسار فقط بدون التأثير على التصميم الحالي ===== */
+
+.left-hero-mockup {
+  position: absolute;
+  left: 4%;
+  top: 52%;
+  transform: translateY(-50%);
+  width: min(42vw, 560px);
+  z-index: 3;
+  pointer-events: none;
+  animation: leftMockupFloat 6s ease-in-out infinite;
+  filter: drop-shadow(0 35px 60px rgba(0, 0, 0, 0.45));
+}
+
+.left-hero-mockup::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(230, 227, 206, 0.34),
+    rgba(78, 96, 118, 0.20) 45%,
+    transparent 75%
+  );
+  filter: blur(45px);
+  z-index: -1;
+}
+
+.left-hero-mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-3d-card {
+  position: absolute;
+  z-index: 4;
+  min-width: 135px;
+  padding: 14px 16px;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(230, 227, 206, 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  animation: heroCardFloat 5.5s ease-in-out infinite;
+}
+
+.hero-3d-card small {
+  display: block;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.hero-3d-card strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--beige);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.hero-3d-card .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.card-accounts {
+  top: 6%;
+  right: 2%;
+}
+
+.card-likes {
+  top: 19%;
+  left: 0%;
+  animation-delay: .7s;
+}
+
+.card-growth {
+  bottom: 18%;
+  right: 5%;
+  animation-delay: 1.2s;
+}
+
+.card-reach {
+  bottom: 7%;
+  left: 8%;
+  animation-delay: 1.7s;
+}
+
+@keyframes leftMockupFloat {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateY(-54%) translateX(10px) rotate(1.5deg);
+  }
+}
+
+@keyframes heroCardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .left-hero-mockup {
+    opacity: 0.25;
+    width: 70vw;
+    left: -10%;
+    top: 55%;
+  }
+}
+
+@media (max-width: 640px) {
+  .left-hero-mockup {
+    display: none;
+  }
+}
 </style>
 </head>
 <body class="selection:bg-secondary selection:text-primary">
@@ -196,6 +330,43 @@
 <main>
 <!-- HERO SECTION -->
 <section class="relative min-h-screen flex items-center pt-24 overflow-hidden section-overlay" id="home">
+  <div class="left-hero-mockup">
+
+  <div class="hero-3d-card card-accounts">
+    <small>حسابات مُدارة</small>
+    <strong>
+      <span class="material-symbols-outlined">alternate_email</span>
+      +45
+    </strong>
+  </div>
+
+  <div class="hero-3d-card card-likes">
+    <small>إعجابات</small>
+    <strong>
+      <span class="material-symbols-outlined">favorite</span>
+      +18K
+    </strong>
+  </div>
+
+  <div class="hero-3d-card card-growth">
+    <small>نمو التفاعل</small>
+    <strong>
+      <span class="material-symbols-outlined">trending_up</span>
+      +120%
+    </strong>
+  </div>
+
+  <div class="hero-3d-card card-reach">
+    <small>وصول الحملات</small>
+    <strong>
+      <span class="material-symbols-outlined">campaign</span>
+      360°
+    </strong>
+  </div>
+
+  <img src="Subject.png" alt="تصميم روام التسويقية">
+
+</div>
 <div id="threejs-astronaut-container"><canvas height="14564" style="display: block; width: 1280px; height: 7282px;" width="2560"></canvas><canvas height="13502" style="display: block; width: 1311px; height: 6751px;" width="2622"></canvas></div>
 <div class="max-w-[1280px] mx-auto px-8 relative z-10 w-full">
 <div class="max-w-3xl text-right md:pr-12">
