@@ -360,21 +360,21 @@
 }
 
 .partner-card{
-    width:220px;
-    height:150px;
-    margin:0 14px;
+    height:180px;
+    padding:25px;
 
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
 
-    background:rgba(255,255,255,.04);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:28px;
 
     transition:.45s;
 }
@@ -382,34 +382,33 @@
 .partner-card:hover{
     transform:translateY(-10px);
     border-color:var(--beige);
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.35),
-    0 0 35px rgba(230,227,206,.12);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
 }
 
 .partner-card img{
-    height:55px;
-    width:auto;
+
+    width:120px;
+    height:70px;
+
     object-fit:contain;
 
-    filter:grayscale(100%) brightness(.9);
-    opacity:.7;
+    margin-bottom:18px;
 
-    transition:.45s;
+    transition:.4s;
 }
 
 .partner-card:hover img{
-    filter:none;
-    opacity:1;
+
     transform:scale(1.08);
+
 }
 
 .partner-card h4{
-    margin-top:18px;
+
     color:white;
-    font-size:15px;
+    font-size:16px;
     font-weight:700;
-    letter-spacing:.5px;
+
 }
 
 @keyframes partnersMove{
@@ -937,8 +936,56 @@ preload="auto"      >
 
 <!-- OUR PARTNERS -->
 
-<section id="partners">
-    ...
+    <section id="partners" class="py-32 relative">
+
+    <div class="max-w-[1280px] mx-auto px-8">
+
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-4xl md:text-6xl font-black text-white mb-6 text-glow">
+                شركاؤنا
+            </h2>
+
+            <p class="text-white/50 text-lg">
+                نفتخر بثقة شركائنا الذين ساهموا في صناعة قصص نجاح مميزة.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+
+            <!-- Ves Ves -->
+            <div class="partner-card reveal">
+                <img src="لوقو vesves.jpeg" alt="Ves Ves">
+                <h4>Ves Ves</h4>
+            </div>
+
+            <!-- Indian House -->
+            <div class="partner-card reveal">
+                <img src="لوقو البيت الهندي.jpeg" alt="البيت الهندي">
+                <h4>البيت الهندي</h4>
+            </div>
+
+            <!-- LaMure -->
+            <div class="partner-card reveal">
+                <img src="لوقو الورد.jpeg" alt="LaMure">
+                <h4>LaMure</h4>
+            </div>
+
+            <!-- سمبوسة بلدي -->
+            <div class="partner-card reveal">
+                <img src="لوقو سمبوسة بلدي.jpeg" alt="سمبوسة بلدي">
+                <h4>سمبوسة بلدي</h4>
+            </div>
+
+            <!-- فلفة -->
+            <div class="partner-card reveal">
+                <img src="لوقو عباية.jpeg" alt="فلفة">
+                <h4>فلفة</h4>
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
 <!-- CONTACT SECTION -->
