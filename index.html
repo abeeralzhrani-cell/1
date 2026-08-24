@@ -1110,75 +1110,142 @@ section {
 </section>
 <!-- SERVICES SECTION -->
 <section class="py-8 md:py-16 relative section-overlay" id="services">
-  <div class="max-w-[1280px] mx-auto px-8">
-<div class="flex flex-col md:flex-row justify-between items-end mb-8 reveal active">
-<div class="max-w-2xl">
-<div class="flex items-center gap-4 mb-6">
-<span class="h-[2px] w-12 bg-secondary"></span>
-<span class="text-secondary font-bold text-xs uppercase tracking-[0.3em]">خدماتنا</span>
-</div>
-<h2 class="text-4xl md:text-6xl font-black text-white">حلول تسويقية متكاملة</h2>
-</div>
-<a class="text-secondary font-bold flex items-center gap-3 group mt-10 md:mt-0 px-8 py-4 rounded-full glass-card hover:bg-secondary hover:text-primary transition-all" href="#contact">
-          اطلب استشارة مجانية
-          <span class="material-symbols-outlined transition-transform group-hover:-translate-x-2">arrow_back</span>
-</a>
-</div>
-<div class="grid lg:grid-cols-3 gap-8">
-<div class="reveal glass-card p-12 rounded-[3rem] group active">
-<div class="w-20 h-20 bg-white/5 rounded-[2rem] flex items-center justify-center mb-10 group-hover:bg-secondary group-hover:rotate-6 transition-all duration-500">
-<span class="material-symbols-outlined text-white text-4xl group-hover:text-primary transition-colors">trending_up</span>
-</div>
-<h3 class="text-2xl font-black text-white mb-8">الاستراتيجية والإعلانات</h3>
-<ul class="space-y-5">
-<li class="flex items-center gap-4 text-white/60">
-<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> خطط تسويقية متكاملة
-            </li>
-<li class="flex items-center gap-4 text-white/60">
-<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> تحليل السوق والمنافسين
-            </li>
-<li class="flex items-center gap-4 text-white/60">
-<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> إدارة حملات الأداء
-            </li>
-</ul>
-</div>
-<div class="reveal bg-secondary text-primary p-12 rounded-[3rem] shadow-2xl relative overflow-hidden active">
-<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
-<div class="w-20 h-20 bg-primary/10 rounded-[2rem] flex items-center justify-center mb-10">
-<span class="material-symbols-outlined text-primary text-4xl">edit_square</span>
-</div>
-<h3 class="text-2xl font-black mb-8">المحتوى وإدارة الحسابات</h3>
-<ul class="space-y-5">
-<li class="flex items-center gap-4 text-primary/70">
-<span class="material-symbols-outlined text-primary text-sm">check_circle</span> إدارة منصات التواصل
-            </li>
-<li class="flex items-center gap-4 text-primary/70">
-<span class="material-symbols-outlined text-primary text-sm">check_circle</span> صناعة المحتوى الإبداعي
-            </li>
-<li class="flex items-center gap-4 text-primary/70">
-<span class="material-symbols-outlined text-primary text-sm">check_circle</span> كتابة الأفكار والسكربتات
-            </li>
-</ul>
-</div>
-<div class="reveal glass-card p-12 rounded-[3rem] group active">
-<div class="w-20 h-20 bg-white/5 rounded-[2rem] flex items-center justify-center mb-10 group-hover:bg-secondary group-hover:rotate-6 transition-all duration-500">
-<span class="material-symbols-outlined text-white text-4xl group-hover:text-primary transition-colors">photo_camera</span>
-</div>
-<h3 class="text-2xl font-black text-white mb-8">الإنتاج والنمو الرقمي</h3>
-<ul class="space-y-5">
-<li class="flex items-center gap-4 text-white/60">
-<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> تصوير ومونتاج سينمائي
-            </li>
-<li class="flex items-center gap-4 text-white/60">
-<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> إدارة حملات المؤثرين
-            </li>
-<li class="flex items-center gap-4 text-white/60">
-<span class="material-symbols-outlined text-secondary text-sm">check_circle</span> تحسين محركات البحث
-            </li>
-</ul>
-</div>
-</div>
-</div>
+    <div class="max-w-[1280px] mx-auto px-8">
+
+        <!-- العنوان -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-6 md:mb-10 reveal active">
+            <div class="max-w-2xl">
+                <div class="flex items-center gap-4 mb-4 md:mb-6">
+                    <span class="h-[2px] w-12 bg-secondary"></span>
+                    <span class="text-secondary font-bold text-xs uppercase tracking-[0.3em]">خدماتنا</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white">حلول تسويقية متكاملة</h2>
+            </div>
+            <a class="text-secondary font-bold flex items-center gap-3 group mt-6 md:mt-0 px-8 py-4 rounded-full glass-card hover:bg-secondary hover:text-primary transition-all" href="#contact">
+                اطلب استشارة مجانية
+                <span class="material-symbols-outlined transition-transform group-hover:-translate-x-2">arrow_back</span>
+            </a>
+        </div>
+
+        <!-- البطاقات بتصميم المنهجية -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+
+            <!-- الخدمة الأولى -->
+            <div class="reveal glass-card p-6 md:p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden active"
+                 onclick="this.querySelector('.details').classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+
+                <div class="flex justify-between items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors duration-300">
+                            <span class="material-symbols-outlined text-secondary group-hover:text-primary text-2xl md:text-3xl transition-colors">trending_up</span>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-white">
+                            الاستراتيجية والإعلانات
+                        </h3>
+                    </div>
+
+                    <span class="arrow material-symbols-outlined text-secondary transition-transform duration-300">
+                        expand_more
+                    </span>
+                </div>
+
+                <div class="details hidden pt-5 mt-5 border-t border-white/10">
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            خطط تسويقية متكاملة
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            تحليل السوق والمنافسين
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            إدارة حملات الأداء
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- الخدمة الثانية -->
+            <div class="reveal glass-card p-6 md:p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden active"
+                 onclick="this.querySelector('.details').classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+
+                <div class="flex justify-between items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors duration-300">
+                            <span class="material-symbols-outlined text-secondary group-hover:text-primary text-2xl md:text-3xl transition-colors">edit_square</span>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-white">
+                            المحتوى وإدارة الحسابات
+                        </h3>
+                    </div>
+
+                    <span class="arrow material-symbols-outlined text-secondary transition-transform duration-300">
+                        expand_more
+                    </span>
+                </div>
+
+                <div class="details hidden pt-5 mt-5 border-t border-white/10">
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            إدارة منصات التواصل
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            صناعة المحتوى الإبداعي
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            كتابة الأفكار والسكربتات
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- الخدمة الثالثة -->
+            <div class="reveal glass-card p-6 md:p-8 rounded-3xl cursor-pointer group transition-all duration-500 overflow-hidden active"
+                 onclick="this.querySelector('.details').classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180');">
+
+                <div class="flex justify-between items-center gap-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-white/5 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors duration-300">
+                            <span class="material-symbols-outlined text-secondary group-hover:text-primary text-2xl md:text-3xl transition-colors">photo_camera</span>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold text-white">
+                            الإنتاج والنمو الرقمي
+                        </h3>
+                    </div>
+
+                    <span class="arrow material-symbols-outlined text-secondary transition-transform duration-300">
+                        expand_more
+                    </span>
+                </div>
+
+                <div class="details hidden pt-5 mt-5 border-t border-white/10">
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            تصوير ومونتاج سينمائي
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            إدارة حملات المؤثرين
+                        </li>
+                        <li class="flex items-center gap-3 text-white/70 text-sm">
+                            <span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                            تحسين محركات البحث
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 </section>
 <!-- PORTFOLIO SECTION -->
 <section class="py-8 md:py-16" id="portfolio">
