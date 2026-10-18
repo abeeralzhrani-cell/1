@@ -1579,9 +1579,7 @@ section {
     </div>
   </div>
 
-</div>
-</section>
-<!-- BRANDING SECTION (قسم الهويات البصرية - صور فقط بدون نصوص) -->
+<!-- BRANDING SECTION (قسم الهويات البصرية - شريط تمرير أفقي) -->
 <section class="py-8 md:py-16 relative section-overlay" id="branding">
 <div class="max-w-[1280px] mx-auto px-8">
 
@@ -1591,55 +1589,68 @@ section {
     <p class="text-white/40 text-lg uppercase tracking-widest font-bold">بناء هوية متكاملة تعكس روح علامتك التجارية</p>
   </div>
 
-  <!-- شبكة الصور بجانب بعضها بدون أي نصوص أو تعاريف -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal active">
-    
-   <!-- البطاقة الأولى (مقاس متغير حسب الصورة) -->
-<div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية رشة.jpeg" alt="هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+  <!-- شريط التمرير الأفقي للهويات البصرية -->
+  <div class="reveal active mb-4">
+    <div class="portfolio-scroll flex gap-6 overflow-x-auto scroll-auto snap-x snap-mandatory cursor-grab select-none pb-2" id="branding-scroll">
+      
+      <!-- البطاقة الأولى -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية رشة.jpeg" alt="هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
-    <!-- الصورة الثانية -->
-    <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية رشة2.jpeg" alt="2هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+      <!-- الصورة الثانية -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية رشة2.jpeg" alt="2هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
-    <!-- الصورة الثالثة -->
-   <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية رشة3.jpeg" alt="هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+      <!-- الصورة الثالثة -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية رشة3.jpeg" alt="هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
-    <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية رشة4.jpeg" alt="هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+      <!-- الصورة الرابعة -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية رشة4.jpeg" alt="هوية رشة" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
-    <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية حدب.jpeg" alt="هوية حدب" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+      <!-- الصورة الخامسة -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية حدب.jpeg" alt="هوية حدب" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
-     <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية حدب 1.jpeg" alt="هوية حدب" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+      <!-- الصورة السادسة -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية حدب 1.jpeg" alt="هوية حدب" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
-     <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all flex items-center justify-center">
-  <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
-    <img src="هوية حدب2.jpeg" alt="هوية حدب" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
-  </div>
-</div>
+      <!-- الصورة السابعة -->
+      <div class="glass-card p-4 rounded-3xl group hover:border-secondary transition-all shrink-0 snap-start w-[280px] sm:w-[360px] flex items-center justify-center">
+        <div class="portfolio-image-container rounded-2xl overflow-hidden relative flex items-center justify-center bg-black/20 w-full">
+          <img src="هوية حدب2.jpeg" alt="هوية حدب" class="w-auto h-auto max-h-[500px] max-w-full object-contain pointer-events-none" draggable="false"/>
+        </div>
+      </div>
 
+    </div>
+
+    <!-- تلميح السحب -->
+    <div class="flex items-center justify-center gap-2 mt-4 text-white/30 text-xs font-bold uppercase tracking-widest">
+      <span class="material-symbols-outlined text-base">swipe</span>
+      اسحب لاستكشاف المزيد من الهويات البصرية
+    </div>
   </div>
+
 </div>
 </section>
 
@@ -2018,5 +2029,43 @@ section {
   menuToggle.addEventListener('click', () => mobileMenu.classList.remove('-translate-y-full'));
   menuClose.addEventListener('click', () => mobileMenu.classList.add('-translate-y-full'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('-translate-y-full')));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('-translate-y-full')));
+
+  // ---------- BRANDING DRAG-TO-SCROLL (تشغيل شريط التمرير للهويات البصرية) ----------
+  (function initBrandingDrag() {
+    const el = document.getElementById('branding-scroll');
+    if (!el) return;
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+
+    function start(x) {
+      isDown = true; moved = false;
+      startX = x;
+      startScroll = el.scrollLeft;
+      el.classList.add('dragging');
+    }
+    function move(x) {
+      if (!isDown) return;
+      const dx = x - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      el.scrollLeft = startScroll - dx;
+    }
+    function end() {
+      isDown = false;
+      el.classList.remove('dragging');
+    }
+
+    el.addEventListener('mousedown', (e) => { start(e.pageX); e.preventDefault(); });
+    window.addEventListener('mousemove', (e) => move(e.pageX));
+    window.addEventListener('mouseup', end);
+    el.addEventListener('mouseleave', () => { if (isDown) end(); });
+
+    el.addEventListener('touchstart', (e) => start(e.touches[0].pageX), { passive: true });
+    el.addEventListener('touchmove', (e) => move(e.touches[0].pageX), { passive: true });
+    el.addEventListener('touchend', end);
+
+    el.addEventListener('click', (e) => { if (moved) e.preventDefault(); }, true);
+  })();
+
+</script> <!-- هنا يغلق السكربت -->
 </script>
 </body></html>
