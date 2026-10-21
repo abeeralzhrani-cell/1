@@ -32,53 +32,40 @@
   }
 </script>
 <style>
-/* ===== الشريط النحيف للشركاء ===== */
+/* ===== الشريط المتحرك المحدث للشركاء ===== */
 .partners-slider {
     overflow: hidden;
-    position: relative;
     width: 100%;
-    background: rgba(255, 255, 255, 0.08);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 18px 0;
-    display: flex;
-    align-items: center;
+    position: relative;
+    /* تأثير تدرج خفيف على الأطراف لجمالية الشكل */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .partners-track {
     display: flex;
-    align-items: center;
-    gap: 60px;
     width: max-content;
-    animation: partnersMove 20s linear infinite;
+    /* قمنا بتقليل الوقت إلى 10 ثوانٍ ليكون المرور أسرع */
+    animation: partnersMove 10s linear infinite;
 }
 
-.partners-slider:hover .partners-track {
-    animation-play-state: paused;
-}
+/* ملاحظة: تم إزالة خاصية إيقاف الحركة عند الماوس لتستمر بالحركة دائماً كما طلبتِ */
 
 .partner-item {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 25px;
     flex-shrink: 0;
 }
 
 .partner-item img {
-    height: 42px;
+    height: 38px; /* مقاس ثابت ومناسب جداً للجوال والكمبيوتر */
     width: auto;
-    max-width: 130px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
-    transition: all 0.3s ease;
 }
 
-.partner-item img:hover {
-    opacity: 1;
-    transform: scale(1.08);
-}
-
+/* حركة التمرير المستمرة */
 @keyframes partnersMove {
     0% {
         transform: translateX(0);
