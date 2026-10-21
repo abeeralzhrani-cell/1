@@ -32,47 +32,52 @@
   }
 </script>
 <style>
-/* ===== الشريط المتحرك السريع والمتقارب للشركاء ===== */
+/* ===== الشريط الأبيض السريع جداً واللا نهائي ===== */
 .partners-slider {
-    overflow: hidden;
-    width: 100%;
+    overflow: hidden !important;
+    width: 100% !important;
     position: relative;
     display: flex;
-    background: rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 12px 0;
+    background-color: #ffffff !important; /* خلفية بيضاء لبروز جميع الشعارات */
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 10px 0 !important;
+    box-sizing: border-box;
 }
 
 .partners-track {
-    display: flex;
-    width: max-content;
-    /* السرعة أصبحت أسرع (6 ثوانٍ فقط)، وتتحرك باستمرار بدون توقف */
-    animation: partnersMove 6s linear infinite;
+    display: flex !important;
+    width: max-content !important;
+    white-space: nowrap !important;
+    /* جعل الحركة سريعة جداً (4 ثوانٍ) وتستمر للأبد بدون توقف */
+    animation: partnersFastMove 4s linear infinite !important;
+    will-change: transform;
 }
 
 .partner-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* تقليل المسافة بين اللوقوات لتكون متقاربة بشكل أنيق */
-    padding: 0 12px;
-    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 10px !important; /* مسافات متقاربة وانيقة بين الشعارات */
+    flex-shrink: 0 !important; /* منع انكماش أو اختفاء الشعار على الجوال */
 }
 
 .partner-item img {
-    height: 35px;
-    width: auto;
-    object-fit: contain;
+    height: 32px !important; /* ارتفاع متناسق جداً للجوال والكمبيوتر */
+    max-height: 32px !important;
+    width: auto !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    display: block !important;
 }
 
-/* حركة التمرير المستمرة بدون توقف أو تقطع */
-@keyframes partnersMove {
+/* حركة تضمن عدم الانقطاع نهائياً عند تكرار العناصر */
+@keyframes partnersFastMove {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(-50%, 0, 0);
     }
 }
   :root {
