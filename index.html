@@ -32,35 +32,34 @@
   }
 </script>
 <style>
-/* ===== الشريط المتحرك المحدث للشركاء ===== */
+/* ===== الشريط النحيف للشركاء (محدث للجوال) ===== */
 .partners-slider {
     overflow: hidden;
     width: 100%;
     position: relative;
-    /* تأثير تدرج خفيف على الأطراف لجمالية الشكل */
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 0;
 }
 
 .partners-track {
     display: flex;
     width: max-content;
-    /* قمنا بتقليل الوقت إلى 10 ثوانٍ ليكون المرور أسرع */
-    animation: partnersMove 10s linear infinite;
+    animation: partnersMove 12s linear infinite;
 }
-
-/* ملاحظة: تم إزالة خاصية إيقاف الحركة عند الماوس لتستمر بالحركة دائماً كما طلبتِ */
 
 .partner-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 25px;
+    padding: 0 20px;
     flex-shrink: 0;
 }
 
 .partner-item img {
-    height: 38px; /* مقاس ثابت ومناسب جداً للجوال والكمبيوتر */
+    height: 35px; /* مقاس متناسق وواضح على الجوال */
     width: auto;
     object-fit: contain;
 }
