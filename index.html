@@ -32,7 +32,7 @@
   }
 </script>
 <style>
-/* ===== الشريط النحيف للشركاء (محدث للجوال) ===== */
+/* ===== الشريط المتحرك السريع والمتقارب للشركاء ===== */
 .partners-slider {
     overflow: hidden;
     width: 100%;
@@ -47,24 +47,26 @@
 .partners-track {
     display: flex;
     width: max-content;
-    animation: partnersMove 12s linear infinite;
+    /* السرعة أصبحت أسرع (6 ثوانٍ فقط)، وتتحرك باستمرار بدون توقف */
+    animation: partnersMove 6s linear infinite;
 }
 
 .partner-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
+    /* تقليل المسافة بين اللوقوات لتكون متقاربة بشكل أنيق */
+    padding: 0 12px;
     flex-shrink: 0;
 }
 
 .partner-item img {
-    height: 35px; /* مقاس متناسق وواضح على الجوال */
+    height: 35px;
     width: auto;
     object-fit: contain;
 }
 
-/* حركة التمرير المستمرة */
+/* حركة التمرير المستمرة بدون توقف أو تقطع */
 @keyframes partnersMove {
     0% {
         transform: translateX(0);
