@@ -32,25 +32,25 @@
   }
 </script>
 <style>
-/* ===== الشريط الأبيض السريع جداً واللا نهائي ===== */
+/* ===== شريط الشركاء المطور للجوال والكمبيوتر ===== */
 .partners-slider {
     overflow: hidden !important;
     width: 100% !important;
-    position: relative;
-    display: flex;
-    background-color: #ffffff !important; /* خلفية بيضاء لبروز جميع الشعارات */
+    position: relative !important;
+    background-color: #ffffff !important; /* خلفية بيضاء واضحة */
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    padding: 10px 0 !important;
-    box-sizing: border-box;
+    padding: 12px 0 !important;
+    box-sizing: border-box !important;
+    direction: ltr !important; /* لضمان انسيابية الحركة من اليمين لليسار */
 }
 
 .partners-track {
     display: flex !important;
     width: max-content !important;
     white-space: nowrap !important;
-    /* جعل الحركة سريعة جداً (4 ثوانٍ) وتستمر للأبد بدون توقف */
-    animation: partnersFastMove 4s linear infinite !important;
+    /* سرعة متناسقة وأنيقة (8 ثوانٍ) تتناسب تماماً مع الشاشات الصغيرة والكبيرة */
+    animation: smoothPartnerScroll 8s linear infinite !important;
     will-change: transform;
 }
 
@@ -58,26 +58,25 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 0 10px !important; /* مسافات متقاربة وانيقة بين الشعارات */
-    flex-shrink: 0 !important; /* منع انكماش أو اختفاء الشعار على الجوال */
+    padding: 0 16px !important; /* مسافة متناسقة ومتقاربة */
+    flex-shrink: 0 !important; /* يمنع اختفاء أو انكماش اللوقو على الجوال */
 }
 
 .partner-item img {
-    height: 32px !important; /* ارتفاع متناسق جداً للجوال والكمبيوتر */
-    max-height: 32px !important;
+    height: 36px !important; /* مقاس واضح وبارز جداً على الجوال */
     width: auto !important;
     max-width: none !important;
     object-fit: contain !important;
     display: block !important;
 }
 
-/* حركة تضمن عدم الانقطاع نهائياً عند تكرار العناصر */
-@keyframes partnersFastMove {
+/* حركة تدفق مستمرة وحريرية بدون أي توقف أو اختفاء */
+@keyframes smoothPartnerScroll {
     0% {
-        transform: translate3d(0, 0, 0);
+        transform: translateX(0);
     }
     100% {
-        transform: translate3d(-50%, 0, 0);
+        transform: translateX(-50%);
     }
 }
   :root {
