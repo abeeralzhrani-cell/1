@@ -32,70 +32,53 @@
   }
 </script>
 <style>
-  /* ===== Partners Slider ===== */
+/* ===== الشريط النحيف للشركاء ===== */
 .partners-slider {
     overflow: hidden;
     position: relative;
     width: 100%;
-    /* تأثير تدرج خفيف على الأطراف لجمالية الشكل */
-    mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, white 15%, white 85%, transparent);
+    background: rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 18px 0;
+    display: flex;
+    align-items: center;
 }
 
 .partners-track {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 60px;
     width: max-content;
-    animation: partnersMove 25s linear infinite;
+    animation: partnersMove 20s linear infinite;
 }
 
-/* إيقاف الحركة مؤقتاً عند مرور الماوس فوق الشريط */
 .partners-slider:hover .partners-track {
     animation-play-state: paused;
 }
 
-.partner-card {
-    width: 200px;
-    height: 140px;
-    padding: 20px;
+.partner-item {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    transition: all 0.4s ease;
+    justify-content: center;
     flex-shrink: 0;
 }
 
-.partner-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--beige);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
-}
-
-.partner-card img {
-    width: 100px;
-    height: 60px;
+.partner-item img {
+    height: 42px;
+    width: auto;
+    max-width: 130px;
     object-fit: contain;
-    margin-bottom: 10px;
-    transition: transform 0.4s ease;
+    filter: brightness(0) invert(1);
+    opacity: 0.85;
+    transition: all 0.3s ease;
 }
 
-.partner-card:hover img {
+.partner-item img:hover {
+    opacity: 1;
     transform: scale(1.08);
 }
 
-.partner-card h4 {
-    color: white;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-/* حركة التحريك المستمرة */
 @keyframes partnersMove {
     0% {
         transform: translateX(0);
@@ -1759,89 +1742,41 @@ section {
   </section>
 
 <!-- OUR PARTNERS -->
-<section id="partners" class="py-8 md:py-16 relative">
-    <div class="max-w-[1280px] mx-auto px-8">
+<section id="partners" class="py-6 relative">
+    <div class="w-full">
 
-        <div class="text-center mb-8 reveal">
-            <h2 class="text-4xl md:text-6xl font-black text-white mb-6 text-glow">
+        <div class="text-center mb-6 reveal">
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-3 text-glow">
                 شركاؤنا
             </h2>
-            <p class="text-white/50 text-lg">
+            <p class="text-white/50 text-sm md:text-base">
                 نفتخر بثقة شركائنا الذين ساهموا في صناعة قصص نجاح مميزة.
             </p>
         </div>
 
-        <!-- الشريط المتحرك -->
+        <!-- الشريط النحيف المتحرك -->
         <div class="partners-slider">
             <div class="partners-track">
                 
                 <!-- المجموعة الأولى -->
-                <div class="partner-card">
-                    <img src="لوقو vesves.jpeg" alt="Ves Ves">
-                    <h4>Ves Ves</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو البيت الهندي.jpeg" alt="البيت الهندي">
-                    <h4>البيت الهندي</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو لامور2.jpeg" alt="LaMure">
-                    <h4>LaMure</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو سمبوسة بلدي.jpeg" alt="سمبوسة بلدي">
-                    <h4>سمبوسة بلدي</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو عباية.jpeg" alt="فلفة">
-                    <h4>فلفة</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="شريك شباك نوير.jpeg" alt="شباك نوير">
-                    <h4>شباك نوير</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="شريك رشة.jpeg" alt="رشة">
-                    <h4>رشة</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="شريك حدب.jpeg" alt="حدب">
-                    <h4>حدب</h4>
-                </div>
+                <div class="partner-item"><img src="لوقو vesves.jpeg" alt="Ves Ves"></div>
+                <div class="partner-item"><img src="لوقو البيت الهندي.jpeg" alt="البيت الهندي"></div>
+                <div class="partner-item"><img src="لوقو لامور2.jpeg" alt="LaMure"></div>
+                <div class="partner-item"><img src="لوقو سمبوسة بلدي.jpeg" alt="سمبوسة بلدي"></div>
+                <div class="partner-item"><img src="لوقو عباية.jpeg" alt="فلفة"></div>
+                <div class="partner-item"><img src="شريك شباك نوير.jpeg" alt="شباك نوير"></div>
+                <div class="partner-item"><img src="شريك رشة.jpeg" alt="رشة"></div>
+                <div class="partner-item"><img src="شريك حدب.jpeg" alt="حدب"></div>
 
-                <!-- المجموعة الثانية (مكررة لضمان التكرار اللانهائي بدون فراغ) -->
-                <div class="partner-card">
-                    <img src="لوقو vesves.jpeg" alt="Ves Ves">
-                    <h4>Ves Ves</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو البيت الهندي.jpeg" alt="البيت الهندي">
-                    <h4>البيت الهندي</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو لامور2.jpeg" alt="LaMure">
-                    <h4>LaMure</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو سمبوسة بلدي.jpeg" alt="سمبوسة بلدي">
-                    <h4>سمبوسة بلدي</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="لوقو عباية.jpeg" alt="فلفة">
-                    <h4>فلفة</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="شريك شباك نوير.jpeg" alt="شباك نوير">
-                    <h4>شباك نوير</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="شريك رشة.jpeg" alt="رشة">
-                    <h4>رشة</h4>
-                </div>
-                <div class="partner-card">
-                    <img src="شريك حدب.jpeg" alt="حدب">
-                    <h4>حدب</h4>
-                </div>
+                <!-- المجموعة الثانية (مكررة لضمان الحركة المستمرة دون توقف) -->
+                <div class="partner-item"><img src="لوقو vesves.jpeg" alt="Ves Ves"></div>
+                <div class="partner-item"><img src="لوقو البيت الهندي.jpeg" alt="البيت الهندي"></div>
+                <div class="partner-item"><img src="لوقو لامور2.jpeg" alt="LaMure"></div>
+                <div class="partner-item"><img src="لوقو سمبوسة بلدي.jpeg" alt="سمبوسة بلدي"></div>
+                <div class="partner-item"><img src="لوقو عباية.jpeg" alt="فلفة"></div>
+                <div class="partner-item"><img src="شريك شباك نوير.jpeg" alt="شباك نوير"></div>
+                <div class="partner-item"><img src="شريك رشة.jpeg" alt="رشة"></div>
+                <div class="partner-item"><img src="شريك حدب.jpeg" alt="حدب"></div>
 
             </div>
         </div>
