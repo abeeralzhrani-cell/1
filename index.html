@@ -875,11 +875,39 @@ section {
         font-size: 14px !important;
     }
 }
-  /* ===== تنسيق قسم باقات روام بدون قص الصور ===== */
+/* ===== تنسيق قسم باقات روام بشريط تمرير أفقي وبدون قص الصور ===== */
+#packages .packages-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+  align-items: stretch;
+}
+
 #packages .package-card {
+  flex: 0 0 84%;
+  max-width: 380px;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  #packages .packages-track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+
+  #packages .package-card {
+    flex: unset;
+    max-width: none;
+  }
 }
 
 #packages .package-img-box {
@@ -898,7 +926,7 @@ section {
 #packages .package-img-box img {
   width: 100%;
   height: auto;
-  max-height: 450px;
+  max-height: 430px;
   object-fit: contain;
   border-radius: 0.75rem;
   display: block;
@@ -910,7 +938,7 @@ section {
   }
 
   #packages .package-img-box img {
-    max-height: 360px;
+    max-height: 330px;
   }
 }
 </style>
@@ -1353,8 +1381,8 @@ section {
     </div>
 
     <!-- البطاقات الثلاث -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
-
+<div class="portfolio-scroll packages-track cursor-grab select-none" id="packages-scroll">
+  
       <!-- الباقة الأولى: باقة انطلاقة -->
       <div class="reveal glass-card package-card p-4 md:p-6 rounded-3xl active">
         <div>
@@ -2345,6 +2373,46 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
     el.addEventListener('click', (e) => { if (moved) e.preventDefault(); }, true);
   })();
 
+  // ---------- PACKAGES DRAG-TO-SCROLL ----------
+  (function initPackagesDrag() {
+    const el = document.getElementById('packages-scroll');
+    if (!el) return;
+    let isDown = false, startX = 0, startScroll = 0, moved = false;
+
+    function start(x) {
+      isDown = true; moved = false;
+      startX = x;
+      startScroll = el.scrollLeft;
+      el.classList.add('dragging');
+    }
+    function move(x) {
+      if (!isDown) return;
+      const dx = x - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      el.scrollLeft = startScroll - dx;
+    }
+    function end() {
+      isDown = false;
+      el.classList.remove('dragging');
+    }
+
+    el.addEventListener('mousedown', (e) => { start(e.pageX); });
+    window.addEventListener('mousemove', (e) => move(e.pageX));
+    window.addEventListener('mouseup', end);
+    el.addEventListener('mouseleave', () => { if (isDown) end(); });
+
+    el.addEventListener('touchstart', (e) => start(e.touches[0].pageX), { passive: true });
+    el.addEventListener('touchmove', (e) => move(e.touches[0].pageX), { passive: true });
+    el.addEventListener('touchend', end);
+
+    el.addEventListener('click', (e) => {
+      if (moved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
+  })();
+  
   // ---------- PACKAGE IMAGE MODAL ----------
   function openPackageModal(src, title) {
     const modal = document.getElementById('package-modal');
