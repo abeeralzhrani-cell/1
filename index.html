@@ -875,6 +875,44 @@ section {
         font-size: 14px !important;
     }
 }
+  /* ===== تنسيق قسم باقات روام بدون قص الصور ===== */
+#packages .package-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#packages .package-img-box {
+  width: 100%;
+  background: rgba(19, 28, 40, 0.8);
+  border-radius: 1rem;
+  padding: 8px;
+  border: 1px solid rgba(230, 227, 206, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+#packages .package-img-box img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  #packages .package-img-box {
+    padding: 6px;
+  }
+
+  #packages .package-img-box img {
+    max-height: 360px;
+  }
+}
 </style>
 </head>
 <body class="selection:bg-secondary selection:text-primary">
@@ -1294,6 +1332,179 @@ section {
         </div>
     </div>
 </section>
+
+  <!-- PACKAGES SECTION -->
+<section class="py-8 md:py-16 relative section-overlay" id="packages">
+  <div class="max-w-[1280px] mx-auto px-4 md:px-8">
+
+    <!-- العنوان -->
+    <div class="text-center mb-8 md:mb-12 reveal active">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <span class="h-[2px] w-12 bg-secondary"></span>
+        <span class="text-secondary font-bold text-xs uppercase tracking-[0.3em]">باقات روام</span>
+        <span class="h-[2px] w-12 bg-secondary"></span>
+      </div>
+      <h2 class="text-3xl md:text-6xl font-black text-white mb-3 text-glow">
+        باقات إدارة المحتوى والتسويق
+      </h2>
+      <p class="text-white/60 text-sm md:text-lg max-w-2xl mx-auto">
+        اختر الباقة الأنسب لمشروعك ومدة الاشتراك، واضغط على الصورة لعرض التفاصيل بحجم مكبر.
+      </p>
+    </div>
+
+    <!-- البطاقات الثلاث -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+
+      <!-- الباقة الأولى: باقة انطلاقة -->
+      <div class="reveal glass-card package-card p-4 md:p-6 rounded-3xl active">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-bold text-secondary/80 uppercase tracking-widest">الباقة الأولى</span>
+            <span class="text-xs font-bold text-white/60">3 / 6 / 12 شهر</span>
+          </div>
+
+          <div class="package-img-box mb-4" onclick="openPackageModal('باقة انطلاقه.jpeg', 'الباقة الأولى | باقة انطلاقة')">
+            <img src="باقة انطلاقه.jpeg" alt="باقة انطلاقة" loading="lazy" />
+          </div>
+
+          <h3 class="text-xl md:text-2xl font-black text-white mb-2">باقة انطلاقة</h3>
+          <p class="text-white/60 text-xs md:text-sm leading-relaxed mb-5">
+            بداية منظمة لبناء الحضور الرقمي والخطط والمحتوى والجدولة ومتابعة الحملات الإعلانية.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+          <button
+            type="button"
+            onclick="openPackageModal('باقة انطلاقه.jpeg', 'الباقة الأولى | باقة انطلاقة')"
+            class="w-full py-2.5 px-4 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+          >
+            <span class="material-symbols-outlined text-base">zoom_in</span>
+            <span>تكبير تفاصيل الباقة</span>
+          </button>
+
+          <a
+            href="https://wa.me/+966144276153?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B1%D9%88%D8%A7%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%86%D8%B7%D9%84%D8%A7%D9%82%D8%A9"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 px-6 rounded-full border border-secondary/40 text-secondary font-bold text-sm hover:bg-secondary hover:text-primary transition-all flex items-center justify-center gap-2"
+          >
+            <span>اطلب باقة انطلاقة</span>
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- الباقة الثانية: باقة نمو -->
+      <div class="reveal glass-card package-card p-4 md:p-6 rounded-3xl border-secondary/60 shadow-[0_20px_50px_rgba(0,0,0,0.35)] md:-translate-y-2 active">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary text-primary text-xs font-black">
+              <span class="material-symbols-outlined text-sm">star</span>
+              الباقة الثانية
+            </span>
+            <span class="text-xs font-bold text-secondary">3 / 6 / 12 شهر</span>
+          </div>
+
+          <div class="package-img-box mb-4" onclick="openPackageModal('باقة نمو.jpeg', 'الباقة الثانية | باقة نمو')">
+            <img src="باقة نمو.jpeg" alt="باقة نمو" loading="lazy" />
+          </div>
+
+          <h3 class="text-xl md:text-2xl font-black text-secondary mb-2">باقة نمو</h3>
+          <p class="text-white/70 text-xs md:text-sm leading-relaxed mb-5">
+            توسّع أوسع في التصاميم والمقاطع ومقاطع الذكاء الاصطناعي وإدارة الحملات والتقارير والتوصيات.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+          <button
+            type="button"
+            onclick="openPackageModal('باقة نمو.jpeg', 'الباقة الثانية | باقة نمو')"
+            class="w-full py-2.5 px-4 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+          >
+            <span class="material-symbols-outlined text-base">zoom_in</span>
+            <span>تكبير تفاصيل الباقة</span>
+          </button>
+
+          <a
+            href="https://wa.me/+966144276153?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B1%D9%88%D8%A7%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D9%86%D9%85%D9%88"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 px-6 rounded-full bg-secondary text-primary font-bold text-sm hover:shadow-[0_0_25px_rgba(230,227,206,0.4)] transition-all flex items-center justify-center gap-2"
+          >
+            <span>اطلب باقة نمو</span>
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- الباقة الثالثة: باقة متكاملة -->
+      <div class="reveal glass-card package-card p-4 md:p-6 rounded-3xl active">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-bold text-secondary/80 uppercase tracking-widest">الباقة الثالثة</span>
+            <span class="text-xs font-bold text-white/60">3 / 6 / 12 شهر</span>
+          </div>
+
+          <div class="package-img-box mb-4" onclick="openPackageModal('باقة متكاملة.jpeg', 'الباقة الثالثة | باقة متكاملة')">
+            <img src="باقة متكاملة.jpeg" alt="باقة متكاملة" loading="lazy" />
+          </div>
+
+          <h3 class="text-xl md:text-2xl font-black text-white mb-2">باقة متكاملة</h3>
+          <p class="text-white/60 text-xs md:text-sm leading-relaxed mb-5">
+            حلول متكاملة بأعلى كثافة في المحتوى والتصاميم وتحسين الحملات وتنسيق حملات المؤثرين.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2.5">
+          <button
+            type="button"
+            onclick="openPackageModal('باقة متكاملة.jpeg', 'الباقة الثالثة | باقة متكاملة')"
+            class="w-full py-2.5 px-4 rounded-full bg-white/5 border border-white/10 text-white/80 text-xs font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+          >
+            <span class="material-symbols-outlined text-base">zoom_in</span>
+            <span>تكبير تفاصيل الباقة</span>
+          </button>
+
+          <a
+            href="https://wa.me/+966144276153?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B1%D9%88%D8%A7%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84%D8%A9"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 px-6 rounded-full border border-secondary/40 text-secondary font-bold text-sm hover:bg-secondary hover:text-primary transition-all flex items-center justify-center gap-2"
+          >
+            <span>اطلب باقة متكاملة</span>
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- نافذة تكبير صورة الباقة -->
+<div
+  id="package-modal"
+  class="fixed inset-0 z-[9998] bg-black/85 backdrop-blur-md hidden items-center justify-center p-4"
+  onclick="if(event.target === this) closePackageModal()"
+>
+  <div class="relative max-w-2xl w-full bg-surface border border-white/15 rounded-3xl p-4 md:p-6 shadow-2xl">
+    <div class="flex items-center justify-between gap-4 mb-4">
+      <h4 id="package-modal-title" class="text-lg md:text-xl font-black text-secondary"></h4>
+      <button
+        type="button"
+        onclick="closePackageModal()"
+        class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+        aria-label="إغلاق"
+      >
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="max-h-[78vh] overflow-auto flex items-center justify-center rounded-2xl bg-black/40 p-2">
+      <img id="package-modal-img" src="" alt="" class="w-auto h-auto max-w-full object-contain rounded-xl" />
+    </div>
+  </div>
+</div>
 <!-- PORTFOLIO SECTION -->
 <!-- PORTFOLIO & DESIGNS SECTION (قسم الأعمال والتصاميم المدمج) -->
 <section class="py-8 md:py-16" id="portfolio">
@@ -2134,6 +2345,28 @@ mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => 
     el.addEventListener('click', (e) => { if (moved) e.preventDefault(); }, true);
   })();
 
+  // ---------- PACKAGE IMAGE MODAL ----------
+  function openPackageModal(src, title) {
+    const modal = document.getElementById('package-modal');
+    const img = document.getElementById('package-modal-img');
+    const titleEl = document.getElementById('package-modal-title');
+    if (!modal || !img || !titleEl) return;
+    img.src = src;
+    img.alt = title;
+    titleEl.textContent = title;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePackageModal() {
+    const modal = document.getElementById('package-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  
 </script>
 </body>
 </html>
